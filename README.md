@@ -29,7 +29,7 @@ com o objetivo de criar um sistema completo de *envio e atendimento de dúvidas 
 - Alteração do status
 - Finalização como “Resolvida”
 
-  ##DER – Diagrama Entidade Relacionamento
+### DER – Diagrama Entidade Relacionamento
 
                       ┌────────────────────────┐
                       │        ALUNO           │
@@ -42,7 +42,7 @@ com o objetivo de criar um sistema completo de *envio e atendimento de dúvidas 
                                   │ 1:N
                                   │
                                   │
-                     ┌────────────▼─────────────┐
+                     ┌────────────▼──────────────┐
                      │         DÚVIDA            │
                      ├───────────────────────────┤
                      │ PK id_duvida              │
@@ -51,13 +51,13 @@ com o objetivo de criar um sistema completo de *envio e atendimento de dúvidas 
                      │ descricao                 │
                      │ prioridade                │
                      │ status_atendimento        │
-                     │ data_criacao             │
-                     │ data_resolucao           │
-                     └────────────┬─────────────┘
+                     │ data_criacao              │
+                     │ data_resolucao            │
+                     └────────────┬───────────── ┘
                                   │ N:1
                                   │
                                   │
-                     ┌────────────▼─────────────┐
+                     ┌────────────▼──────────────┐
                      │        PROFESSOR          │
                      ├───────────────────────────┤
                      │ PK id_professor           │
