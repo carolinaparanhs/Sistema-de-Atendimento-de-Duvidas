@@ -31,38 +31,34 @@ com o objetivo de criar um sistema completo de *envio e atendimento de dúvidas 
 
 ### DER – Diagrama Entidade Relacionamento
 
-                      ┌────────────────────────┐
-                      │        ALUNO           │
-                      ├────────────────────────┤
-                      │ PK id_aluno            │
-                      │ nome                   │
-                      │ email                  │
-                      │ senha                  │
-                      └───────────┬────────────┘
-                                  │ 1:N
-                                  │
-                                  │
-                     ┌────────────▼──────────────┐
-                     │         DÚVIDA            │
-                     ├───────────────────────────┤
-                     │ PK id_duvida              │
-                     │ FK id_aluno               │
-                     │ titulo                    │
-                     │ descricao                 │
-                     │ prioridade                │
-                     │ status_atendimento        │
-                     │ data_criacao              │
-                     │ data_resolucao            │
-                     └────────────┬───────────── ┘
-                                  │ N:1
-                                  │
-                                  │
-                     ┌────────────▼──────────────┐
-                     │        PROFESSOR          │
-                     ├───────────────────────────┤
-                     │ PK id_professor           │
-                     │ nome                      │
-                     │ email                     │
-                     │ senha                     │
-                     └───────────────────────────┘
+```mermaid
+erDiagram
+    ALUNO {
+        int id_aluno PK
+        string nome
+        string email
+        string senha
+    }
+
+    DUVIDA {
+        int id_duvida PK
+        int id_aluno FK
+        string titulo
+        string descricao
+        string prioridade
+        string status_atendimento
+        datetime data_criacao
+        datetime data_resolucao
+    }
+
+    PROFESSOR {
+        int id_professor PK
+        string nome
+        string email
+        string senha
+    }
+
+    ALUNO ||--o{ DUVIDA : "possui"
+    DUVIDA }o--|| PROFESSOR : "atendida por"
+
 
