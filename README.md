@@ -35,30 +35,30 @@ com o objetivo de criar um sistema completo de *envio e atendimento de dúvidas 
 erDiagram
     ALUNO {
         int id_aluno PK
-        string nome
-        string email
-        string senha
+        varchar nome
+        varchar email
+        varchar senha
+    }
+
+    PROFESSOR {
+        int id_professor PK
+        varchar nome
+        varchar email
+        varchar senha
     }
 
     DUVIDA {
         int id_duvida PK
         int id_aluno FK
-        string titulo
-        string descricao
-        string prioridade
-        string status_atendimento
-        datetime data_criacao
-        datetime data_resolucao
+        varchar titulo
+        text descricao
+        enum prioridade
+        enum status_atendimento
+        timestamp data_criacao
+        timestamp data_resolucao
     }
 
-    PROFESSOR {
-        int id_professor PK
-        string nome
-        string email
-        string senha
-    }
+    ALUNO ||--o{ DUVIDA : "envia"
 
-    ALUNO ||--o{ DUVIDA : "possui"
-    DUVIDA }o--|| PROFESSOR : "atendida por"
 
 
