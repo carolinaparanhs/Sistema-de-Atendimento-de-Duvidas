@@ -50,6 +50,7 @@ erDiagram
     DUVIDA {
         int id_duvida PK
         int id_aluno FK
+        int id_professor FK
         varchar titulo
         text descricao
         enum prioridade
@@ -58,7 +59,8 @@ erDiagram
         timestamp data_resolucao
     }
 
-    ALUNO ||--o{ DUVIDA : "envia"
+    ALUNO ||--o{ DUVIDA : "cria"
+    PROFESSOR ||--o{ DUVIDA : "atende"
 
 
 
