@@ -30,37 +30,4 @@ com o objetivo de criar um sistema completo de *envio e atendimento de dúvidas 
 - Finalização como “Resolvida”
 
 ### DER – Diagrama Entidade Relacionamento
-
-```mermaid
-erDiagram
-    ALUNO {
-        int id_aluno PK
-        varchar nome
-        varchar email
-        varchar senha
-    }
-
-    PROFESSOR {
-        int id_professor PK
-        varchar nome
-        varchar email
-        varchar senha
-    }
-
-    DUVIDA {
-        int id_duvida PK
-        int id_aluno FK
-        int id_professor FK
-        varchar titulo
-        text descricao
-        enum prioridade
-        enum status_atendimento
-        timestamp data_criacao
-        timestamp data_resolucao
-    }
-
-    ALUNO ||--o{ DUVIDA : "cria"
-    PROFESSOR ||--o{ DUVIDA : "atende"
-
-
-
+<img width="450" height="387" alt="image" src="https://github.com/user-attachments/assets/21bd69f7-361b-4be2-9004-68b6585ebbcc" />
