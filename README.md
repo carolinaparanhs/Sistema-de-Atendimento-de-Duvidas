@@ -38,17 +38,17 @@ com o objetivo de criar um sistema completo de *envio e atendimento de dúvidas 
 
 ### Arquitetura do Projeto
 - O projeto segue o padrão MVC:
-model → Representação das entidades
-dao → Comunicação com o banco de dados
-controller → Regras de negócio
-view → Interface gráfica (Swing)
-util → Conexão com banco
+  - model → Representação das entidades
+  - dao → Comunicação com o banco de dados
+  - controller → Regras de negócio
+  - view → Interface gráfica (Swing)
+  - util → Conexão com banco
 
 ### Banco de Dados
 - Banco relacional com uso de:
-INSERT
-SELECT
-UPDATE
+  - INSERT
+  - SELECT
+  - UPDATE
 
 ### DER – Diagrama Entidade Relacionamento
 <img width="450" height="387" alt="image" src="https://github.com/user-attachments/assets/21bd69f7-361b-4be2-9004-68b6585ebbcc" />
