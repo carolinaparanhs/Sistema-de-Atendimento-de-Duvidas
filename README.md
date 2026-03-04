@@ -29,5 +29,26 @@ com o objetivo de criar um sistema completo de *envio e atendimento de dúvidas 
 - Alteração do status
 - Finalização como “Resolvida”
 
+###Conceitos de POO Utilizados
+- Encapsulamento (atributos privados + getters/setters)
+- Herança (Aluno e Professor herdam de Usuario)
+- Polimorfismo
+- Abstração
+- Separação em camadas (MVC)
+
+###Arquitetura do Projeto
+- O projeto segue o padrão MVC:
+model → Representação das entidades
+dao → Comunicação com o banco de dados
+controller → Regras de negócio
+view → Interface gráfica (Swing)
+util → Conexão com banco
+
+###Banco de Dados
+- Banco relacional com uso de:
+INSERT
+SELECT
+UPDATE
+
 ### DER – Diagrama Entidade Relacionamento
 <img width="450" height="387" alt="image" src="https://github.com/user-attachments/assets/21bd69f7-361b-4be2-9004-68b6585ebbcc" />
