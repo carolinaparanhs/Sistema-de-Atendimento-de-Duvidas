@@ -35,14 +35,17 @@ public class TelaProfessor extends JFrame {
         JButton btnAtualizar = new JButton("Atualizar");
         JButton btnAssumir = new JButton("Assumir Selecionada");
         JButton btnResolver = new JButton("Resolver Selecionada");
+        JButton btnDetalhar = new JButton("Detalhar");
         JButton btnVoltar = new JButton("Sair");
 
         btnAtualizar.addActionListener(e -> carregarTabela());
         btnAssumir.addActionListener(e -> assumirSelecionada());
         btnResolver.addActionListener(e -> resolverSelecionada());
+        btnDetalhar.addActionListener(e -> detalharSelecionada());
         btnVoltar.addActionListener(e -> { new TelaLogin().setVisible(true); dispose(); });
 
         barra.add(btnAtualizar);
+        barra.add(btnDetalhar);
         barra.add(btnAssumir);
         barra.add(btnResolver);
         barra.add(btnVoltar);
@@ -120,5 +123,36 @@ public class TelaProfessor extends JFrame {
         JOptionPane.showMessageDialog(this, "Erro: " + ex.getMessage());
     }
  }
+    private void detalharSelecionada() {
+    int row = tabela.getSelectedRow();
+    Duvida d = tableModel.getDuvidaAt(row);
+
+    if (d == null) {
+        JOptionPane.showMessageDialog(this, "Selecione uma dúvida na tabela.");
+        return;
+    }
+
+    JTextArea area = new JTextArea(14, 45);
+    area.setEditable(false);
+    area.setLineWrap(true);
+    area.setWrapStyleWord(true);
+
+    String resposta = (d.getResposta() == null || d.getResposta().isBlank())
+            ? "Sem resposta ainda."
+            : d.getResposta();
+
+    area.setText(
+            "ALUNO (ID): " + d.getIdAluno() + "\n" +
+            "PROFESSOR (ID): " + d.getIdProfessor() + "\n\n" +
+            "TÍTULO:\n" + d.getTitulo() + "\n\n" +
+            "DESCRIÇÃO:\n" + d.getDescricao() + "\n\n" +
+            "RESPOSTA:\n" + resposta + "\n\n" +
+            "STATUS: " + d.getStatusAtendimento() + " | PRIORIDADE: " + d.getPrioridade()
+    );
+
+    JOptionPane.showMessageDialog(this, new JScrollPane(area),
+            "Detalhes da Dúvida (ID: " + d.getIdDuvida() + ")",
+            JOptionPane.INFORMATION_MESSAGE);
+}
 
 }

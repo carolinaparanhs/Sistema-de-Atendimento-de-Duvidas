@@ -1,3 +1,4 @@
+
 package view;
 
 import controller.DuvidaController;
@@ -58,21 +59,22 @@ public class TelaAluno extends JFrame {
         JButton btnCadastrar = new JButton("Cadastrar");
         JButton btnAtualizar = new JButton("Atualizar Lista");
         JButton btnVerResposta = new JButton("Ver Resposta");
+        JButton btnDetalhar = new JButton("Detalhar");
         JButton btnVoltar = new JButton("Voltar");
-        
-        
-
+       
+               
         btnCadastrar.addActionListener(e -> cadastrar());
         btnAtualizar.addActionListener(e -> carregarTabela());
         btnVerResposta.addActionListener(e -> verRespostaSelecionada());
+        btnDetalhar.addActionListener(e -> detalharSelecionada());
         btnVoltar.addActionListener(e -> { new TelaLogin().setVisible(true); dispose(); });
         
-
 
         JPanel botoes = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         botoes.add(btnCadastrar);
         botoes.add(btnAtualizar);
         botoes.add(btnVerResposta);
+        botoes.add(btnDetalhar);
         botoes.add(btnVoltar);
 
         // ====== Tabela ======
@@ -87,7 +89,6 @@ public class TelaAluno extends JFrame {
 
         JPanel esquerda = new JPanel(new BorderLayout());
         esquerda.add(form, BorderLayout.CENTER);
-        esquerda.add(botoes, BorderLayout.SOUTH);
 
         JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, esquerda, spTabela);
         split.setDividerLocation(360);
@@ -95,6 +96,7 @@ public class TelaAluno extends JFrame {
         setLayout(new BorderLayout());
         add(topoPanel, BorderLayout.NORTH);
         add(split, BorderLayout.CENTER);
+        add(botoes, BorderLayout.SOUTH); 
 
         carregarTabela();
     }
@@ -154,6 +156,35 @@ public class TelaAluno extends JFrame {
 
     JOptionPane.showMessageDialog(this, new JScrollPane(area),
             "Resposta do Professor", JOptionPane.INFORMATION_MESSAGE);
+}
+    private void detalharSelecionada() {
+    int row = tabela.getSelectedRow();
+    Duvida d = tableModel.getDuvidaAt(row);
+
+    if (d == null) {
+        JOptionPane.showMessageDialog(this, "Selecione uma dúvida na tabela.");
+        return;
+    }
+
+    JTextArea area = new JTextArea(14, 45);
+    area.setEditable(false);
+    area.setLineWrap(true);
+    area.setWrapStyleWord(true);
+
+    String resposta = (d.getResposta() == null || d.getResposta().isBlank())
+            ? "Sem resposta ainda."
+            : d.getResposta();
+
+    area.setText(
+            "TÍTULO:\n" + d.getTitulo() + "\n\n" +
+            "DESCRIÇÃO:\n" + d.getDescricao() + "\n\n" +
+            "RESPOSTA DO PROFESSOR:\n" + resposta + "\n\n" +
+            "STATUS: " + d.getStatusAtendimento() + " | PRIORIDADE: " + d.getPrioridade()
+    );
+
+    JOptionPane.showMessageDialog(this, new JScrollPane(area),
+            "Detalhes da Dúvida (ID: " + d.getIdDuvida() + ")",
+            JOptionPane.INFORMATION_MESSAGE);
 }
 
 }
