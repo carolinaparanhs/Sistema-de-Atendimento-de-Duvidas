@@ -29,14 +29,14 @@ com o objetivo de criar um sistema completo de *envio e atendimento de dúvidas 
 - Alteração do status
 - Finalização como “Resolvida”
 
-###Conceitos de POO Utilizados
+### Conceitos de POO Utilizados
 - Encapsulamento (atributos privados + getters/setters)
 - Herança (Aluno e Professor herdam de Usuario)
 - Polimorfismo
 - Abstração
 - Separação em camadas (MVC)
 
-###Arquitetura do Projeto
+### Arquitetura do Projeto
 - O projeto segue o padrão MVC:
 model → Representação das entidades
 dao → Comunicação com o banco de dados
@@ -44,7 +44,7 @@ controller → Regras de negócio
 view → Interface gráfica (Swing)
 util → Conexão com banco
 
-###Banco de Dados
+### Banco de Dados
 - Banco relacional com uso de:
 INSERT
 SELECT
