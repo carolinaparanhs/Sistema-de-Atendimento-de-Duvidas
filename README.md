@@ -49,6 +49,7 @@ com o objetivo de criar um sistema completo de *envio e atendimento de dúvidas 
   - INSERT
   - SELECT
   - UPDATE
+  - DELETE
 
 ### DER – Diagrama Entidade Relacionamento
 <img width="450" height="387" alt="image" src="https://github.com/user-attachments/assets/21bd69f7-361b-4be2-9004-68b6585ebbcc" />
