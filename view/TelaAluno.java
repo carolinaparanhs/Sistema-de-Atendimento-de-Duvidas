@@ -61,14 +61,15 @@ public class TelaAluno extends JFrame {
         JButton btnVerResposta = new JButton("Ver Resposta");
         JButton btnDetalhar = new JButton("Detalhar");
         JButton btnVoltar = new JButton("Voltar");
-       
-               
+        JButton btnExcluir = new JButton("Excluir");
+        
+           
         btnCadastrar.addActionListener(e -> cadastrar());
         btnAtualizar.addActionListener(e -> carregarTabela());
         btnVerResposta.addActionListener(e -> verRespostaSelecionada());
         btnDetalhar.addActionListener(e -> detalharSelecionada());
         btnVoltar.addActionListener(e -> { new TelaLogin().setVisible(true); dispose(); });
-        
+        btnExcluir.addActionListener(e -> excluirSelecionada());
 
         JPanel botoes = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         botoes.add(btnCadastrar);
@@ -76,6 +77,8 @@ public class TelaAluno extends JFrame {
         botoes.add(btnVerResposta);
         botoes.add(btnDetalhar);
         botoes.add(btnVoltar);
+        botoes.add(btnExcluir);
+        
 
         // ====== Tabela ======
         tabela.setRowHeight(24);
@@ -186,5 +189,28 @@ public class TelaAluno extends JFrame {
             "Detalhes da Dúvida (ID: " + d.getIdDuvida() + ")",
             JOptionPane.INFORMATION_MESSAGE);
 }
+    private void excluirSelecionada() {
 
+    int row = tabela.getSelectedRow();
+    Duvida d = tableModel.getDuvidaAt(row);
+
+    if (d == null) {
+        JOptionPane.showMessageDialog(this, "Selecione uma dúvida na tabela.");
+        return;
+    }
+
+    int confirm = JOptionPane.showConfirmDialog(
+            this,
+            "Deseja realmente excluir esta dúvida?",
+            "Confirmar exclusão",
+            JOptionPane.YES_NO_OPTION
+    );
+
+    if (confirm == JOptionPane.YES_OPTION) {
+        controller.excluirDuvida(d.getIdDuvida());
+        carregarTabela();
+        JOptionPane.showMessageDialog(this, "Dúvida excluída com sucesso!");
+    }
+
+    }
 }

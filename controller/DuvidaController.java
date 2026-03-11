@@ -27,10 +27,10 @@ public class DuvidaController {
     public void assumirDuvida(int idDuvida, int idProfessor) {
         duvidaDAO.assumirDuvida(idDuvida, idProfessor);
     }
-
     public void resolverDuvida(int idDuvida, String resposta) {
     duvidaDAO.resolverDuvida(idDuvida, resposta);
     }
-   
-
+    public void excluirDuvida(int idDuvida){
+    duvidaDAO.excluirDuvida(idDuvida);
+    }
 }

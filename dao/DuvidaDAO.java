@@ -162,5 +162,20 @@ public class DuvidaDAO {
         throw new RuntimeException("Erro ao resolver dúvida", e);
     }
   }
+    public void excluirDuvida(int idDuvida) {
+
+    String sql = "DELETE FROM duvida WHERE id_duvida = ?";
+
+    try (Connection conn = Conexao.conectar();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setInt(1, idDuvida);
+        stmt.executeUpdate();
+
+    } catch (SQLException e) {
+        throw new RuntimeException("Erro ao excluir dúvida", e);
+    }
+}
+
 
 }
